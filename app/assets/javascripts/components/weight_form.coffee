@@ -12,7 +12,7 @@
     @setState "#{ name }": e.target.value
   handleSubmit: (e) ->
     e.preventDefault()
-    $.post '', { weight: @state }, (data) =>
+    $.post '/weights', { weight: @state }, (data) =>
       @setState @getInitialState()
     , 'JSON'
   render: ->
@@ -46,7 +46,7 @@
             type: 'hidden'
             className: 'form-control'
             name: 'id'
-            value: @state.user.id
+            value: @props.user.id
             onChange: @handleChange
         React.DOM.button
           type: 'submit'
