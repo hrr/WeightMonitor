@@ -1,14 +1,16 @@
 @WeightForm = React.createClass
   getInitialState: ->
-    user_id: @props.user.id
+    user_id: ''
     entry: ''
+    date: moment().format('YYYY-mm-DD')
+    time: moment().format('HH:mm')
   handleChange: (e) ->
     name = e.target.name
     @setState "#{ name }": e.target.value
   handleSubmit: (e) ->
     e.preventDefault()
     $.post '/weights', { weight: @state }, (data) =>
-      @props.handleNewWeight data
+      @props.handleNewUser data
       @setState @getInitialState()
     , 'JSON'
   valid: ->
@@ -32,6 +34,13 @@
           placeholder: 'Date'
           name: 'date'
           value: @state.date
+          onChange: @handleChange
+        React.DOM.input
+          type: 'time'
+          className: 'form-control'
+          placeholder: 'Time'
+          name: 'time'
+          value: @state.time
           onChange: @handleChange
         React.DOM.input
           type: 'hidden'

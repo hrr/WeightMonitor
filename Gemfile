@@ -7,6 +7,7 @@ end
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'momentjs-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
