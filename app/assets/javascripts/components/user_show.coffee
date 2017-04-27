@@ -2,11 +2,12 @@
   getInitialState: ->
     user: @props.data
     weights: @props.data.weights
+    currentWeight: @props.data.weights[0].entry
   getDefaultProps: ->
     user: []
     weights: []
   addWeight: (weight) ->
-    weights = React.addons.update(@state.weights, { $unshift: [weight] })
+    weights = React.addons.update(@state.weights, { $unshift: [weight] }).sort((a,b) => new Date(b.registered) - new Date(a.registered))
     @setState weights: weights
   deleteWeight: (weight) ->
     index = @state.weights.indexOf weight
@@ -15,7 +16,7 @@
   updateWeight: (weight, data) ->
     index = @state.weights.indexOf weight
     weights = React.addons.update(@state.weights, { $splice: [[index, 1, data]] })
-    @replaceState weights: weights, user: @state.user
+    @replaceState weights: weights, user: @state.user, currentWeight: weights[0].entry
   goBack: ->
     window.location.replace("/users")
   render: ->
@@ -26,7 +27,7 @@
         "Weight Monitor (#{@state.user.name})"
       React.DOM.div
         className: 'row'
-      React.createElement WeightForm, handleNewWeight: @addWeight, user: @state.user, last_weight: @state.weights[0].entry
+      React.createElement WeightForm, handleNewWeight: @addWeight, user: @state.user, lastWeight: @state.currentWeight
       React.DOM.hr null
       React.DOM.button
         className: 'btn btn-default'
