@@ -1,8 +1,8 @@
 @WeightForm = React.createClass
   getInitialState: ->
-    user_id: ''
+    user_id: @props.user.id
     entry: ''
-    date: moment().format('YYYY-mm-DD')
+    date: moment().format('YYYY-MM-DD')
     time: moment().format('HH:mm')
   handleChange: (e) ->
     name = e.target.name
