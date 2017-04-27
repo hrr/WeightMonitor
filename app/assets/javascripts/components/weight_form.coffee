@@ -1,9 +1,11 @@
 @WeightForm = React.createClass
   getInitialState: ->
     user_id: @props.user.id
-    entry: @props.last_weight
+    entry: @props.lastWeight
     date: moment().format('YYYY-MM-DD')
     time: moment().format('HH:mm')
+  componentWillReceiveProps: (nextProps) ->
+      @setState "entry": nextProps.lastWeight
   handleChange: (e) ->
     name = e.target.name
     @setState "#{ name }": e.target.value
