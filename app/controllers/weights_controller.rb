@@ -9,11 +9,23 @@ class WeightsController < ApplicationController
   end
 
   def destroy
+    @weight = Weight.find(params[:id])
+    @weight.destroy
+    head :no_content
+  end
+
+  def update
+    @weight = Weight.find(params[:id])
+    if @weight.update(weight_params)
+      render json: @weight
+    else
+      render json: @weight.errors, status: :unprocessable_entity
+    end
   end
 
   private
     def weight_params
-      datetime = "#{params[:weight][:date]}T#{params[:weight][:time]}"
+      datetime = "#{params[:weight][:date]} #{params[:weight][:time]}"
       @weight_params ||= params.require(:weight).permit(:user_id, :entry, :date, :time)
       @weight_params.delete :date
       @weight_params.delete :time

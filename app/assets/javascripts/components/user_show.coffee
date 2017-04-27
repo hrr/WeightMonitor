@@ -8,6 +8,14 @@
   addWeight: (weight) ->
     weights = React.addons.update(@state.weights, { $unshift: [weight] })
     @setState weights: weights
+  deleteWeight: (weight) ->
+    index = @state.weights.indexOf weight
+    weights = React.addons.update(@state.weights, { $splice: [[index, 1]] })
+    @replaceState weights: weights, user: @state.user
+  updateWeight: (weight, data) ->
+    index = @state.weights.indexOf weight
+    weights = React.addons.update(@state.weights, { $splice: [[index, 1, data]] })
+    @replaceState weights: weights, user: @state.user
   goBack: ->
     window.location.replace("/users")
   render: ->
@@ -34,4 +42,4 @@
             React.DOM.th null, 'Actions'
         React.DOM.tbody null,
           for weight in @state.weights
-            React.createElement Weight, key: weight.id, weight: weight
+            React.createElement Weight, key: weight.id, weight: weight, handleDeleteWeight: @deleteWeight, handleEditWeight: @updateWeight
