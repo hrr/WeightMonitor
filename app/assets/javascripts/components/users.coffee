@@ -3,11 +3,8 @@
     users: @props.data
   getDefaultProps: ->
     users: []
-  totalUsers: ->
-    tUsers = @state.users
-    tUsers.reduce ((prev, curr) ->
-      prev + 1
-    ), 0
+  diff: (jias, chloes) ->
+    diffWeight = jias - chloes
   render: ->
     React.DOM.div
       className: 'users'
@@ -16,9 +13,9 @@
         'Weight Monitor'
       React.DOM.div
         className: 'row'
-      React.createElement AmountBox, type: 'success', tUsers: @totalUsers(), text: 'Jias Current'
-      React.createElement AmountBox, type: 'info', tUsers: @totalUsers(), text: 'Difference'
-      React.createElement AmountBox, type: 'danger', tUsers: @totalUsers(), text: 'Chloes Current'
+      React.createElement AmountBox, type: 'success', content: @state.users[0].weights[0].entry, text: "#{@state.users[0].name}'s Current"
+      React.createElement AmountBox, type: 'info', content: @diff(@state.users[0].weights[0].entry, @state.users[1].weights[0].entry), text: 'Difference'
+      React.createElement AmountBox, type: 'danger', content: @state.users[1].weights[0].entry, text: "#{@state.users[1].name}'s Current"
       React.DOM.hr null
       React.DOM.table
         className: 'table table-bordered'

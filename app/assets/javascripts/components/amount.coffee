@@ -10,4 +10,4 @@
         React.DOM.div
           className: 'panel-body'
           @props.name
-          @props.tUsers
+          "#{@props.content} kg"
