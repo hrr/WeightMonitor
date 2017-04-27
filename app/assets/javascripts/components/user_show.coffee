@@ -7,8 +7,7 @@
     user: []
     weights: []
   addWeight: (weight) ->
-    weights = React.addons.update(@state.weights, { $unshift: [weight] })
-    weights = weights.sort((a,b) => new Date(b.registered) - new Date(a.registered))
+    weights = React.addons.update(@state.weights, { $unshift: [weight] }).sort((a,b) => new Date(b.registered) - new Date(a.registered))
     @setState weights: weights
   deleteWeight: (weight) ->
     index = @state.weights.indexOf weight
