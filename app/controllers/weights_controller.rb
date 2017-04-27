@@ -1,7 +1,6 @@
 class WeightsController < ApplicationController
   def create
-    @user = User.find(params[:weight][:user][:id])
-    @user.weights.build(params[:weight][:entry])
+    @weight = Weight.new(weight_params)
     if @weight.save
       render json: @weight
     else
@@ -14,6 +13,6 @@ class WeightsController < ApplicationController
 
   private
     def weight_params
-      #params.require(:weights).permit(:id, :entry)
+      params.require(:weight).permit(:user_id, :entry)
     end
 end
