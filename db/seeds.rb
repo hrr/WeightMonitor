@@ -8,5 +8,5 @@
 User.create!(name:  "Jia")
 User.create!(name:  "Chloe")
 u = User.all
-u.first.weights.create!(entry: 70, registered: Time.now)
-u.second.weights.create!(entry: 60, registered: Time.now)
+u.first.weights.create!(entry: 70, date: Time.now.strftime("%F"), time: Time.now.strftime("%T"))
+u.second.weights.create!(entry: 60, date: Time.now.strftime("%F"), time: Time.now.strftime("%T"))
