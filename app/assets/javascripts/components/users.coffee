@@ -4,7 +4,7 @@
   getDefaultProps: ->
     users: []
   diff: (jias, chloes) ->
-    diffWeight = jias - chloes
+    diffWeight = Math.abs(jias - chloes)
   render: ->
     React.DOM.div
       className: 'users'
@@ -23,7 +23,6 @@
           React.DOM.tr null,
             React.DOM.th null, 'Name'
             React.DOM.th null, 'Email'
-            React.DOM.th null, 'Actions'
         React.DOM.tbody null,
           for user in @state.users
             React.createElement User, key: user.id, user: user

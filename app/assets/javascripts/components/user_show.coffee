@@ -8,6 +8,8 @@
   addWeight: (weight) ->
     weights = React.addons.update(@state.weights, { $unshift: [weight] })
     @setState weights: weights
+  goBack: ->
+    window.location.replace("/users")
   render: ->
     React.DOM.div
       className: 'user_show'
@@ -17,6 +19,11 @@
       React.DOM.div
         className: 'row'
       React.createElement WeightForm, handleNewWeight: @addWeight, user: @state.user
+      React.DOM.hr null
+      React.DOM.button
+        className: 'btn btn-default'
+        onClick: @goBack
+        '<-- Back'
       React.DOM.hr null
       React.DOM.table
         className: 'table table-bordered'
