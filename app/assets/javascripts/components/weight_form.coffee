@@ -1,7 +1,7 @@
 @WeightForm = React.createClass
   getInitialState: ->
     user_id: @props.user.id
-    entry: ''
+    entry: @props.last_weight
     date: moment().format('YYYY-MM-DD')
     time: moment().format('HH:mm')
   handleChange: (e) ->
@@ -22,7 +22,7 @@
       React.DOM.div
         className: 'form-group'
         React.DOM.input
-          type: 'text'
+          type: 'number'
           className: 'form-control'
           placeholder: 'Weight'
           name: 'entry'

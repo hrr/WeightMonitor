@@ -26,7 +26,7 @@
         "Weight Monitor (#{@state.user.name})"
       React.DOM.div
         className: 'row'
-      React.createElement WeightForm, handleNewWeight: @addWeight, user: @state.user
+      React.createElement WeightForm, handleNewWeight: @addWeight, user: @state.user, last_weight: @state.weights[0].entry
       React.DOM.hr null
       React.DOM.button
         className: 'btn btn-default'
