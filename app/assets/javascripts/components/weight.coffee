@@ -67,7 +67,7 @@
       React.DOM.td null,
         React.DOM.input
           className: 'form-control'
-          type: 'text'
+          type: 'number'
           defaultValue: @props.weight.entry
           ref: 'entry'
       React.DOM.td null,
