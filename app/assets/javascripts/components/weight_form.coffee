@@ -10,7 +10,7 @@
   handleSubmit: (e) ->
     e.preventDefault()
     $.post '/weights', { weight: @state }, (data) =>
-      @props.handleNewUser data
+      @props.handleNewWeight data
       @setState @getInitialState()
     , 'JSON'
   valid: ->
