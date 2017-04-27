@@ -25,10 +25,6 @@ class WeightsController < ApplicationController
 
   private
     def weight_params
-      datetime = "#{params[:weight][:date]} #{params[:weight][:time]}"
-      @weight_params ||= params.require(:weight).permit(:user_id, :entry, :date, :time)
-      @weight_params.delete :date
-      @weight_params.delete :time
-      @weight_params.merge(registered: datetime)
+      params.require(:weight).permit(:user_id, :entry, :date, :time)
     end
 end
