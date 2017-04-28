@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name:  "Jia")
-User.create!(name:  "Chloe")
+User.create!(name:  "Jia", targetWeight: 65)
+User.create!(name:  "Chloe", targetWeight: 55)
 u = User.all
 u.first.weights.create!(entry: 70, date: Time.now.strftime("%F"), time: Time.now.strftime("%T"))
 u.second.weights.create!(entry: 60, date: Time.now.strftime("%F"), time: Time.now.strftime("%T"))
