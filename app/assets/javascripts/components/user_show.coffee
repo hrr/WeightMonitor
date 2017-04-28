@@ -18,7 +18,7 @@
     weights = React.addons.update(@state.weights, { $splice: [[index, 1, data]] })
     @replaceState weights: weights, user: @state.user, currentWeight: weights[0].entry
   goBack: ->
-    window.location.replace("/users")
+    window.location.replace("/")
   render: ->
     React.DOM.div
       className: 'user_show'
