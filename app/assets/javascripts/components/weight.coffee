@@ -69,6 +69,8 @@
           className: 'form-control'
           type: 'number'
           defaultValue: @props.weight.entry
+          pattern: '[0-9]+([\.,][0-9])?'
+          step: '0.1'
           ref: 'entry'
       React.DOM.td null,
         React.DOM.a
