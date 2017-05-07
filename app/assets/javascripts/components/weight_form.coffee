@@ -28,6 +28,8 @@
           className: 'form-control'
           placeholder: 'Weight'
           name: 'entry'
+          pattern: '[0-9]+([\.,][0-9])?'
+          step: '0.1'
           value: @state.entry
           onChange: @handleChange
         React.DOM.input
